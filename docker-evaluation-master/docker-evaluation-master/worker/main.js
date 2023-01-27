@@ -3,6 +3,13 @@ const fetch = require('node-fetch')
 const express = require('express')
 const { v4 } = require('uuid')
 const id = v4()
+
+// durant le lancement du conteneur : SPECIALITE prend l'un des trois valeur : {0 : generale , 1 : addition , 2 : multuplication }
+const SPECIALITE = 
+  process.env.SPECIALITE !== undefined
+    ?process.env.SPECIALITE
+    : 0
+
 const PLANNER =
   process.env.PLANNER !== undefined
     ? process.env.PLANNER
@@ -36,7 +43,7 @@ app.use(
   })
 )
 
-if (MULT)
+if (MULT && (SPECIALITE === 0 ||SPECIALITE ===2 ))
   app.post('/mult', (req, res) => {
     if (mult) {
       console.error('mult', 'Already working')
@@ -54,7 +61,7 @@ if (MULT)
     }, duration)
   })
 
-if (ADD)
+if (ADD && (SPECIALITE === 0 || SPECIALITE ===1))
   app.post('/add', (req, res) => {
     if (add) {
       console.error('add', 'Already working')
