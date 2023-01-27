@@ -1,0 +1,10 @@
+version: '3'
+services:
+  planner:
+    build:
+      context: .
+      dockerfile: planner/Dockerfile
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile

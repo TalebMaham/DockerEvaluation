@@ -1,5 +1,6 @@
-FROM node:14
+FROM node:latest
 COPY . .
-RUN yarn install
+RUN npm install
+ENV PORT 8080
 EXPOSE 8080
 CMD [ "node", "main" ]

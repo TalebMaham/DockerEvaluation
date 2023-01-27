@@ -1,6 +1,7 @@
-FROM node:14
+FROM node:latest
 COPY . .
-ENV TASKS 20
-RUN yarn install
+RUN npm install
+ENV TASKS 4
+ENV PORT 3000
 EXPOSE 3000
 CMD [ "node", "main" ]

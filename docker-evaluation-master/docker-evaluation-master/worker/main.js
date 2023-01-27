@@ -3,7 +3,6 @@ const fetch = require('node-fetch')
 const express = require('express')
 const { v4 } = require('uuid')
 const id = v4()
-console.log(id)
 const PLANNER =
   process.env.PLANNER !== undefined
     ? process.env.PLANNER
@@ -48,7 +47,7 @@ if (MULT)
     const { a, b } = req.body
     task = { a, b }
     console.log('mult', req.body)
-    const duration = randInt(3000, 12000)
+    const duration = randInt(3000, 12000) // temps d'attente 
     setTimeout(() => {
       mult = false
       res.send(JSON.stringify({ res: a * b, duration, id }))
@@ -66,10 +65,10 @@ if (ADD)
     const { a, b } = req.body
     task = { a, b }
     console.log('add', req.body)
-    const duration = randInt(3000, 7000)
+    const duration = randInt(3000, 7000)   // temps d'attente 
     setTimeout(() => {
       add = false
-      res.send(JSON.stringify({ res: a + b, duration, id }))
+      res.send(JSON.stringify({ res: a + b, duration, id })) //le resultat 
     }, duration)
   })
 
